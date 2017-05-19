@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from datetime import date
 
 
 # Fixed values
@@ -20,12 +21,18 @@ class Garden(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class Location(models.Model):
     name = models.CharField(max_length=20)
     exposure = models.ManyToManyField(Exposure)
     description = models.CharField(max_length=25)
     location = models.ForeignKey(Garden)
+
+    def __str__(self):
+        return self.name
 
 
 class Plant(models.Model):
@@ -40,17 +47,27 @@ class Plant(models.Model):
     food = models.BooleanField()
     soil = models.ManyToManyField(Soil)
 
+    def __str__(self):
+        return self.name
+
 
 class Planting(models.Model):
-    date = models.DateField()
+    date = models.DateField(default=date.today)
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
     location = models.ManyToManyField(Location)
     status = models.ForeignKey(Status)
+
+    def __str__(self):
+        return "%s planted on %s" % (self.plant, self.date)
 
 
 class Log(models.Model):
     area = models.ManyToManyField(Location)
     notes = models.TextField()
+    date = models.DateField(default=date.today)
+
+    def __str__(self):
+        return "%s on %s" % (self.area, self.date)
 
 
 class PlantingNotes(models.Model):
