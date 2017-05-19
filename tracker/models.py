@@ -8,13 +8,22 @@ from datetime import date
 class Status(models.Model):
     status = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.status
+
 
 class Exposure(models.Model):
     exposure_type = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.exposure_type
+
 
 class Soil(models.Model):
     soil_type = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.soil_type
 
 
 class Garden(models.Model):
@@ -29,7 +38,7 @@ class Location(models.Model):
     name = models.CharField(max_length=20)
     exposure = models.ManyToManyField(Exposure)
     description = models.CharField(max_length=25)
-    location = models.ForeignKey(Garden)
+    garden = models.ForeignKey(Garden)
 
     def __str__(self):
         return self.name
