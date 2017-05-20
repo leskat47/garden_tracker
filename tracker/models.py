@@ -26,6 +26,7 @@ class Soil(models.Model):
         return self.soil_type
 
 
+# Garden data
 class Garden(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=50)
@@ -70,6 +71,7 @@ class Planting(models.Model):
         return "%s planted on %s" % (self.plant, self.date)
 
 
+# Logs
 class Log(models.Model):
     area = models.ManyToManyField(Location)
     notes = models.TextField()

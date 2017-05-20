@@ -11,4 +11,3 @@ admin.site.register(Plant)
 admin.site.register(Planting)
 admin.site.register(Log)
 admin.site.register(PlantingNotes)
-    
