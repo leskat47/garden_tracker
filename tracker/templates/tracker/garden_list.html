@@ -5,8 +5,11 @@
 </head>
 <body>
     <h1>Garden</h1>
-    {% for garden in garden_list %}
-        <h1>{{ garden.name }}</h1>
-    {% endfor %}
+    <h1>{{ garden.name }}</h1>
+    <ul>
+        {% for log in logs %}
+            <li>{{ log.date }}: {{ log.notes}}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
