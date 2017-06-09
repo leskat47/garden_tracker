@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.views import generic
 
-from .models import Garden, Log, Location
+from .models import Garden, Log, Location, Planting
 
 
 class GardenView(generic.TemplateView):
-
+    """ Main Page """
     template_name = "tracker/garden_list.html"
 
     def get_context_data(self, **kwargs):
@@ -13,6 +13,11 @@ class GardenView(generic.TemplateView):
         context['logs'] = Log.objects.all()
         context['garden'] = Garden.objects.get(id=1)
         return context
+
+class PlantView(generic.ListView):
+    """ Show list of current plant plantings and their status """
+
+    queryset = Planting.objects.select_related('plant').select_related('status').exclude(status__status='dead')
 
 
 class LogView(generic.ListView):
@@ -24,4 +29,3 @@ class LogView(generic.ListView):
 
 # class PlantView(generic.ListView):
 #     template_name = "tracker/plants.html"
-

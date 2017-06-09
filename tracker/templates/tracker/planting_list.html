@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plants</title>
+</head>
+<body>
+    <h1>Garden Log</h1>
+    <ul>
+        {% for planting in planting_list %}
+            <li>{{ planting.date }}: {{ planting.plant.name }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
