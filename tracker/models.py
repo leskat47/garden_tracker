@@ -58,6 +58,9 @@ class Plant(models.Model):
     soil = models.ManyToManyField(Soil)
     notes = models.TextField(null=True)
 
+    def plantings(self):
+        return Planting.objects.filter(plant=self).exclude(status__status='dead')
+
     def __str__(self):
         return self.name
 
