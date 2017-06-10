@@ -54,8 +54,9 @@ class Plant(models.Model):
     exposure = models.ManyToManyField(Exposure)
     moisture = models.CharField(max_length=25)
     bloom_season = models.CharField(max_length=25)
-    food = models.BooleanField()
+    food = models.CharField(max_length=20, null=True)
     soil = models.ManyToManyField(Soil)
+    notes = models.TextField(null=True)
 
     def __str__(self):
         return self.name
@@ -64,11 +65,12 @@ class Plant(models.Model):
 class Planting(models.Model):
     date = models.DateField(default=date.today)
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
-    location = models.ManyToManyField(Location)
+    location = models.ForeignKey(Location, null=True)
     status = models.ForeignKey(Status)
+    description = models.TextField(null=True)
 
     def __str__(self):
-        return "%s planted on %s" % (self.plant, self.date)
+        return "<%s planted on %s>" % (self.plant, self.date)
 
 
 # Logs

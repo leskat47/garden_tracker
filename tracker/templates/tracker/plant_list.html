@@ -6,8 +6,8 @@
 <body>
     <h1>Garden Log</h1>
     <ul>
-        {% for plant, plantings in plants.items %}
-            <li>{{ plant }}: {% for p in plantings %}{{ p.date }} {{ p.location }}{% endfor %}</li>
+        {% for planting in plant_list %}
+            <li>{{ planting.date }}: {{ planting.plant.name }}</li>
         {% endfor %}
     </ul>
 
