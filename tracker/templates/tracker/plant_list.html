@@ -7,19 +7,18 @@
     <h1>Garden Logs</h1>
     <ul>
         {% for plant in plant_list %}
-            <li>{{ plant.name }}:
-              {% for planting in plant.plantings %}
-                {{ planting.date }}
-                {{ planting.location.name }}
-              {% endfor %}
+            <li><strong>{{ plant.name }}</strong>:
+              <ul>
+                {% for planting in plant.plantings %}
+                  <li>
+                    Planted on {{ planting.date }} in
+                    {{ planting.location.name }}
+                    {% if planting.description %}: {{ planting.description }}{% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
             </li>
         {% endfor %}
     </ul>
-    <ul>
-        {% for plant, plantings in plants.items %}
-            <li>{{ plant }}: {% for p in plantings %}{{ p.date }} {{ p.location }}{% endfor %}</li>
-        {% endfor %}
-    </ul>
-
 </body>
 </html>
