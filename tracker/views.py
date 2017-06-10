@@ -34,7 +34,6 @@ class PlantView(generic.TemplateView):
         for plant in plantings:
             print plant
             context['plants'].setdefault(plant.plant.name, []).append(plant)
-        print context['plants']['Geranium'][0].location
         return context
 
 
