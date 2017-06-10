@@ -82,11 +82,22 @@ class Log(models.Model):
     notes = models.TextField()
     date = models.DateField(default=date.today)
 
+
+    def plantingnotes(self):
+        return PlantingNote.objects.filter(log=self)
+
+    def newplanting(self):
+
+        return Planting.objects.filter(date=self.date)
+
     def __str__(self):
         return "%s on %s" % (self.area, self.date)
 
 
-class PlantingNotes(models.Model):
+class PlantingNote(models.Model):
     note = models.TextField()
     planting = models.ForeignKey(Planting)
     log = models.ForeignKey(Log)
+
+    def __str__(self):
+        return "<Planting note on %s>" % (self.planting.plant.name)

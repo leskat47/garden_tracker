@@ -7,7 +7,25 @@
     <h1>Garden Log</h1>
     <ul>
         {% for log in log_list %}
-            <li>{{ log.date }}: {{ log.notes }}</li>
+            <li>Log for {{ log.date }}:</li>
+
+            <ul>
+              <li>{{ log.notes }}</li>
+              {% for note in log.plantingnotes %}
+              <li>
+                  {{ note.planting.plant.name }}:
+                  {{ note.note }}
+              </li>
+              {% endfor %}
+            </ul>
+            Planted:
+            <ul>
+              {% for newplant in log.newplanting %}
+              <li>
+                {{ newplant.plant.name }}
+              </li>
+              {% endfor %}
+            </ul>
         {% endfor %}
     </ul>
 
