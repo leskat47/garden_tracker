@@ -4,7 +4,7 @@ from django.db import models
 from datetime import date
 
 
-# Fixed values
+# Fixed values ##############################################################
 class Status(models.Model):
     status = models.CharField(max_length=20)
 
@@ -26,7 +26,7 @@ class Soil(models.Model):
         return self.soil_type
 
 
-# Garden data
+# Garden data #################################################################
 class Garden(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=50)
@@ -76,23 +76,20 @@ class Planting(models.Model):
         return "<%s planted on %s>" % (self.plant, self.date)
 
 
-# Logs
+# Logs ########################################################################
 class Log(models.Model):
     area = models.ManyToManyField(Location)
     notes = models.TextField()
     date = models.DateField(default=date.today)
 
-
     def plantingnotes(self):
         return PlantingNote.objects.filter(log=self)
 
     def newplanting(self):
-
         return Planting.objects.filter(date=self.date)
 
     def __str__(self):
         return "%s on %s" % (self.area, self.date)
-
 
 class PlantingNote(models.Model):
     note = models.TextField()
