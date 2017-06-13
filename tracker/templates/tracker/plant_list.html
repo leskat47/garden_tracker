@@ -8,6 +8,9 @@
     <ul>
         {% for plant in plant_list %}
             <li><strong>{{ plant.name }}</strong>:
+              <!-- {% for p in plant.planting_set.all %}
+                Date: {{ p.date }}
+              {% endfor %} -->
               <ul>
                 {% for planting in plant.plantings %}
                   <li>
