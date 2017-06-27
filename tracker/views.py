@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from django.views.generic.edit import CreateView
 from django.views.generic.edit import FormView
-# from django.http import UpdateForm
 import forms
 
 from .models import Garden, Log, Location, Planting, Plant
@@ -44,6 +42,6 @@ class CreateLogView(FormView):
         log.save()
 
         log.area.add(form.cleaned_data['area'].first().id)
-
         log.save()
+
         return super(CreateLogView, self).form_valid(form)
