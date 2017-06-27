@@ -18,14 +18,16 @@
               </li>
               {% endfor %}
             </ul>
-            Planted:
-            <ul>
-              {% for newplant in log.newplanting %}
-              <li>
-                {{ newplant.plant.name }}
-              </li>
-              {% endfor %}
-            </ul>
+            {% if log.newplanting %}
+              Planted:
+              <ul>
+                {% for newplant in log.newplanting %}
+                <li>
+                  {{ newplant.plant.name }}
+                </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
         {% endfor %}
     </ul>
 
