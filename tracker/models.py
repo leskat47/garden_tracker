@@ -44,6 +44,8 @@ class Location(models.Model):
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        return "<Location %s>" % self.name
 
 class Plant(models.Model):
     name = models.CharField(max_length=70)
@@ -88,8 +90,8 @@ class Log(models.Model):
     def newplanting(self):
         return Planting.objects.filter(date=self.date)
 
-    def __str__(self):
-        return "%s on %s" % (self.area, self.date)
+    # def __str__(self):
+    #     return "%s on %s" % (self.area, self.date)
 
 class PlantingNote(models.Model):
     note = models.TextField()

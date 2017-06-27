@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Log</title>
+  </head>
+  <body>
+    <h1>New Log</h1>
+    <form role="form" method="post">{% csrf_token %}
+      <ul>
+        {{ form.as_p }}
+      </ul>
+      <input type="submit" value="Save" />
+    </form>
+  </body>
+</html>

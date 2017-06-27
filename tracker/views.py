@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic.edit import CreateView
+from django.views.generic.edit import FormView
 # from django.http import UpdateForm
 import forms
 
@@ -32,7 +33,17 @@ class LogView(generic.ListView):
     queryset = Log.objects.order_by("-date")
 
 
-class CreateLogView(CreateView):
+class CreateLogView(FormView):
     model = Log
     template_name = "tracker/update_form.html"
+    success_url = '/tracker/log/'
     form_class = forms.LogForm
+
+    def form_valid(self, form):
+        log = Log(notes=form.cleaned_data['notes'], date=form.cleaned_data['date'])
+        log.save()
+
+        log.area.add(form.cleaned_data['area'].first().id)
+
+        log.save()
+        return super(CreateLogView, self).form_valid(form)
