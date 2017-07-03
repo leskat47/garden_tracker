@@ -8,6 +8,5 @@ urlpatterns = [
     url(r'^log/$', views.LogView.as_view(), name='log'),
     url(r'^plants/$', views.PlantView.as_view(), name='plants'),
     url(r'^update/$', views.CreateLogView.as_view(), name='update'),
-    # url(r'^newlog/$', views.NewLogView.as_view(), name='newlog'),
-    # url(r'^updatelog/$', views.update, name='updatelog'),
+    url(r'^plant/(?P<pk>\d+)$', views.PlantDetailView.as_view(), name='plant-detail'),
 ]

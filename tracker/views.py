@@ -19,9 +19,14 @@ class GardenView(generic.TemplateView):
 class PlantView(generic.ListView):
     """ Show list of current plant plantings and their status """
 
-    template_name ='tracker/plant_list.html'
+    template_name ='tracker/plants.html'
     # queryset = Plant.objects.order_by("name").prefetch_related('planting_set')
     queryset = Plant.objects.order_by("name")
+
+
+class PlantDetailView(generic.DetailView):
+    """ Show data about a particular species of plant """
+    model = Plant
 
 
 class LogView(generic.ListView):
