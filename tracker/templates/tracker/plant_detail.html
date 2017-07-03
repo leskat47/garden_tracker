@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ plant.name }}</title>
+  </head>
+  <body>
+    <h1>{{ plant.name }}</h1>
+    <i>{% if plant.sci_name %}{{ plant.sci_name }}{% else %}
+      Scientific Name Unknown{% endif %}</i>
+    <p>Height: {{ plant.height }} Width: {{ plant.width }}</p>
+    <p>{% for exposure in plant.exposure.all %}{{ exposure.exposure_type}} {% endfor %}</p>
+    <p>{{ plant.moisture }}</p>
+    <p>Dominant color: {{ plant.color }}</p>
+    <p>Bloom season: {{ plant.bloom_season }}</p>
+    <p>{{ plant.food }}</p>
+    <p>{% for soil in plant.soil.all %}{{ soil.soil_type}} {% endfor %}</p>
+    <p>Notes:<br>
+      {{ plant.notes }}</p>
+
+  </body>
+</html>
