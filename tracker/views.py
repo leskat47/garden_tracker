@@ -28,6 +28,8 @@ class PlantDetailView(generic.DetailView):
     """ Show data about a particular species of plant """
     model = Plant
 
+    queryset = Plant.objects.prefetch_related('planting_set')
+
 
 class LogView(generic.ListView):
     # model = Log

@@ -17,6 +17,14 @@
     <p>{% for soil in plant.soil.all %}{{ soil.soil_type}} {% endfor %}</p>
     <p>Notes:<br>
       {{ plant.notes }}</p>
+    Plantings:
+    <ul>
+    {% for planting in plant.planting_set.all %}
+      <li>Location:
+        {{ planting.location }}
+        planted on {{ planting.date }} - {{ planting.status }}</li>
+    {% endfor %}
+    <ul>
 
   </body>
 </html>
