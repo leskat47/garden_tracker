@@ -7,7 +7,7 @@
     <h1>Garden Logs</h1>
     <ul>
         {% for plant in plant_list %}
-            <li><strong>{{ plant.name }}</strong>:
+            <li><strong><a href="{{ plant.get_absolute_url }}">{{ plant.name }}</a></strong>:
               <!-- {% for p in plant.planting_set.all %}
                 Date: {{ p.date }}
               {% endfor %} -->

@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from datetime import date
+from django.core.urlresolvers import reverse
 
 
 # Fixed values ##############################################################
@@ -62,6 +63,11 @@ class Plant(models.Model):
 
     def plantings(self):
         return Planting.objects.filter(plant=self).exclude(status__status='dead')
+
+    def get_absolute_url(self):
+        """URL."""
+
+        return reverse('plant-detail', kwargs={'pk': self.id})
 
     def __str__(self):
         return self.name
