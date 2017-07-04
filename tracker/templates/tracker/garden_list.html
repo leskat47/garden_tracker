@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Garden</title>
-</head>
-<body>
+{% extends "tracker/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+  {% block content %}
     <h1>Garden</h1>
     <h1>{{ garden.name }}</h1>
     <ul>
@@ -11,5 +10,4 @@
             <li>{{ log.date }}: {{ log.notes}}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+  {% endblock %}

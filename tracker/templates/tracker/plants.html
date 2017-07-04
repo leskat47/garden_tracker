@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Plants</title>
-</head>
-<body>
+{% extends "tracker/base.html" %}
+
+  {% block title %}Logs{% endblock %}
+
+  {% block content %}
     <h1>Garden Logs</h1>
     <ul>
         {% for plant in plant_list %}
@@ -23,5 +22,4 @@
             </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+    {% endblock %}

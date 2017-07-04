@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Garden Log</title>
-</head>
-<body>
+{% extends "tracker/base.html" %}
+
+ {% block title %}Logs{% endblock %}
+  {% block content %}
     <h1>Garden Log</h1>
     <ul>
         {% for log in log_list %}
@@ -30,6 +28,4 @@
             {% endif %}
         {% endfor %}
     </ul>
-
-</body>
-</html>
+    {% endblock %}
