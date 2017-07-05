@@ -10,4 +10,9 @@
             <li>{{ log.date }}: {{ log.notes}}</li>
         {% endfor %}
     </ul>
+    Current Plants
+    <ul>
+      {% for plant in plants %}
+      <li>{{ plant }}</li>
+      {% endfor %}
   {% endblock %}

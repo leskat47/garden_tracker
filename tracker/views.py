@@ -3,7 +3,7 @@ from django.views import generic
 from django.views.generic.edit import FormView
 import forms
 
-from .models import Garden, Log, Location, Planting, Plant
+from .models import Garden, Log, Location, Planting, Plant, Status
 
 
 class GardenView(generic.TemplateView):
@@ -14,6 +14,8 @@ class GardenView(generic.TemplateView):
         context = super(GardenView, self).get_context_data(**kwargs)
         context['logs'] = Log.objects.all()
         context['garden'] = Garden.objects.get(id=1)
+        live_plants = list(map(lambda s: s.id, Status.objects.exclude(status='dead').all()))
+        context['plants'] = Plant.objects.filter(planting__status__in=live_plants).order_by('name').distinct()
         return context
 
 class PlantView(generic.ListView):
