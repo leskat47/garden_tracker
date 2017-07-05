@@ -1,3 +1,18 @@
 body {
+  background-color: grey;
+}
+.container {
   background-color: #edffe8;
+}
+
+#sidenav {
+  padding-top: 12pt;
+  background-color: #f9fff7;
+  font-size: 16pt;
+  color: #397227;
+  line-height: 2;
+}
+
+a {
+  color: #397227;
 }
