@@ -4,25 +4,32 @@
 
   {% block content %}
     <h1>{{ plant.name }}</h1>
-    <i>{% if plant.sci_name %}{{ plant.sci_name }}{% else %}
-      Scientific Name Unknown{% endif %}</i>
-    <p>Height: {{ plant.height }} Width: {{ plant.width }}</p>
-    <p>{% for exposure in plant.exposure.all %}{{ exposure.exposure_type}} {% endfor %}</p>
-    <p>{{ plant.moisture }}</p>
-    <p>Dominant color: {{ plant.color }}</p>
-    <p>Bloom season: {{ plant.bloom_season }}</p>
-    <p>{{ plant.food }}</p>
-    <p>{% for soil in plant.soil.all %}{{ soil.soil_type}} {% endfor %}</p>
-    <p>Notes:<br>
-      {{ plant.notes }}</p>
-    Plantings:
-    <ul>
-    {% for planting in plant.planting_set.all %}
-      <li>Location:
-        {{ planting.location }}
-        planted on {{ planting.date }} - {{ planting.status }}</li>
-    {% endfor %}
-    <ul>
+    <div class="row">
+      <div class="col-sm-9">
+        <i>{% if plant.sci_name %}{{ plant.sci_name }}{% else %}
+          Scientific Name Unknown{% endif %}</i>
+        <p>Height: {{ plant.height }} Width: {{ plant.width }}</p>
+        <p>{% for exposure in plant.exposure.all %}{{ exposure.exposure_type}} {% endfor %}</p>
+        <p>{{ plant.moisture }}</p>
+        <p>Dominant color: {{ plant.color }}</p>
+        <p>Bloom season: {{ plant.bloom_season }}</p>
+        <p>Feeding: {{ plant.food }}</p>
+        <p>{% for soil in plant.soil.all %}{{ soil.soil_type}} {% endfor %}</p>
+        <p>Notes:<br>
+          {{ plant.notes }}</p>
+        Plantings:
+        <ul>
+        {% for planting in plant.planting_set.all %}
+          <li>Location:
+            {{ planting.location }}
+            planted on {{ planting.date }} - {{ planting.status }}</li>
+        {% endfor %}
+        <ul>
+      </div>
+      <div class="col-sm-">
+
+      </div>
+    </div>
 
   {% endblock %}
 </html>
