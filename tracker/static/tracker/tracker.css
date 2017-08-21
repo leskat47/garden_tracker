@@ -6,7 +6,8 @@ body {
 }
 
 #sidenav {
-  padding-top: 12pt;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: #f9fff7;
   font-size: 16pt;
   color: #397227;
@@ -15,4 +16,7 @@ body {
 
 a {
   color: #397227;
+}
+.col-xs-10 {
+  border: solid black;
 }
