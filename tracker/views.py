@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, UpdateView
 import forms
 
 from .models import Garden, Log, Location, Planting, Plant, Status
@@ -17,6 +17,21 @@ class GardenView(generic.TemplateView):
         live_plants = list(map(lambda s: s.id, Status.objects.exclude(status='dead').all()))
         context['plants'] = Plant.objects.filter(planting__status__in=live_plants).order_by('name').distinct()
         return context
+
+
+class LocationsView(generic.ListView):
+    template_name = 'tracker/locations.html'
+    model = Location
+
+    def get_context_data(self, **kwargs):
+        context = super(LocationsView, self).get_context_data(**kwargs)
+        return context
+
+class LocationUpdateView(UpdateView):
+    model = Location
+    fields = ['name', 'exposure', 'desctiption']
+    template_name_suffix = '_update_form.html'
+
 
 class PlantView(generic.ListView):
     """ Show list of current plant plantings and their status """

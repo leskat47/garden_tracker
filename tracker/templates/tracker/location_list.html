@@ -1,0 +1,14 @@
+{% extends "tracker/base.html" %}
+
+{% block title %}Locations{% endblock %}
+
+{% block content %}
+<h1>Locations</h1>
+  <ul>
+    {% for location in object_list %}
+      <li>{{ location.name }}</li>
+    {% empty %}
+      <li>No locations yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
