@@ -6,7 +6,7 @@
 <h1>Locations</h1>
   <ul>
     {% for location in object_list %}
-      <li>{{ location.name }}</li>
+      <li><a href="{{ location.get_absolute_url }}">{{ location.name }}</a></li>
     {% empty %}
       <li>No locations yet.</li>
     {% endfor %}

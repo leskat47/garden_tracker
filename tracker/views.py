@@ -27,10 +27,11 @@ class LocationsView(generic.ListView):
         context = super(LocationsView, self).get_context_data(**kwargs)
         return context
 
+
 class LocationUpdateView(UpdateView):
     model = Location
-    fields = ['name', 'exposure', 'desctiption']
-    template_name_suffix = '_update_form.html'
+    fields = ['name', 'exposure', 'description']
+    template_name_suffix = '_update_form'
 
 
 class PlantView(generic.ListView):

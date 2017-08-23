@@ -42,6 +42,11 @@ class Location(models.Model):
     description = models.CharField(max_length=25)
     garden = models.ForeignKey(Garden)
 
+    def get_absolute_url(self):
+        """Update URL."""
+
+        return reverse('location', kwargs={'pk': self.id})
+
     def __str__(self):
         return self.name
 
