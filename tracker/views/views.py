@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic.edit import FormView, UpdateView
-import forms
+from tracker import forms
 
-from .models import Garden, Log, Location, Planting, Plant, Status
+from tracker.models import Garden, Log, Location, Planting, Plant, Status
 
 
 class GardenView(generic.TemplateView):
