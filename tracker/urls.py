@@ -1,5 +1,4 @@
-from django.conf.urls import url
-
+from django.conf.urls import url, include
 from views import views
 
 urlpatterns = [
@@ -11,4 +10,7 @@ urlpatterns = [
     url(r'^plants/$', views.PlantView.as_view(), name='plants'),
     url(r'^update/$', views.CreateLogView.as_view(), name='update'),
     url(r'^plant/(?P<pk>\d+)$', views.PlantDetailView.as_view(), name='plant-detail'),
+
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+
 ]
