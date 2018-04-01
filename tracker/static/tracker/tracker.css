@@ -1,17 +1,23 @@
 body {
   background-color: grey;
 }
+
+h1 {
+  padding-top: .5em;
+}
+
+article {
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
 .container {
   background-color: #edffe8;
 }
 
-#sidenav {
-  padding-top: 30px;
-  padding-bottom: 30px;
+#nav {
   background-color: #f9fff7;
-  font-size: 16pt;
+  font-size: 12pt;
   color: #397227;
-  line-height: 2;
 }
 
 a {

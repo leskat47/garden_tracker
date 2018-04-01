@@ -3,8 +3,7 @@
 {% block title %}Home{% endblock %}
 
   {% block content %}
-    <h1>Garden</h1>
-    <h1>{{ garden.name }}</h1>
+    <h1>Garden: {{ garden.name }}</h1>
     <ul>
         {% for log in logs %}
             <li>{{ log.date }}: {{ log.notes}}</li>

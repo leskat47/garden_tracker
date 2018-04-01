@@ -5,26 +5,40 @@
     <meta charset="utf-8">
     <title>{% block title %}Title goes here{% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link href="{% static 'tracker/tracker.css' %}" rel="stylesheet">
   </head>
   <body>
     <div class="container">
+      <div class="row" id="nav">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'garden' %}"><strong>Garden</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'settings' %}">Locations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'log' %}">Log</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'plants' %}">Plants</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'update' %}">Update</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <article class="container">
       <div class="row">
-        <div class="col-sm-2" id="sidenav">
-            <p><a href="{% url 'garden' %}">Garden</a></p>
-            <p><a href="{% url 'settings' %}">Settings</a></p>
-            <p><a href="{% url 'log' %}">Logs</a></p>
-            <p><a href="{% url 'plants' %}">Plants </a></p>
-            <p><a href="{% url 'update' %}">New Log</a></p>
-        </div>
-        <div class="col">
-          {% block content %}{% endblock %}
+        <div class="col-sm-12">
+            {% block content %}{% endblock %}
         </div>
       </div>
 
-    </div>
+    </article>
   </body>
 </html>
