@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from datetime import date
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 
 # Fixed values ##############################################################
@@ -31,6 +32,7 @@ class Soil(models.Model):
 class Garden(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=50)
+    user = models.ForeignKey(User, null=True)
 
     def __str__(self):
         return self.name
