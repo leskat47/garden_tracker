@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.views.generic.edit import FormView, UpdateView
 from tracker import forms
+from django.urls import reverse_lazy
 
 from tracker.models import Garden, Log, Location, Planting, Plant, Status
 
@@ -25,6 +26,7 @@ class LocationsView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(LocationsView, self).get_context_data(**kwargs)
+        # import pdb; pdb.set_trace()
         return context
 
 
@@ -32,6 +34,8 @@ class LocationUpdateView(UpdateView):
     model = Location
     fields = ['name', 'exposure', 'description']
     template_name_suffix = '_update_form'
+
+    success_url = reverse_lazy('settings')
 
 
 class PlantView(generic.ListView):

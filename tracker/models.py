@@ -37,24 +37,6 @@ class Garden(models.Model):
     def __str__(self):
         return self.name
 
-
-class Location(models.Model):
-    name = models.CharField(max_length=20)
-    exposure = models.ManyToManyField(Exposure)
-    description = models.CharField(max_length=25)
-    garden = models.ForeignKey(Garden)
-
-    def get_absolute_url(self):
-        """Update URL."""
-
-        return reverse('location', kwargs={'pk': self.id})
-
-    def __str__(self):
-        return self.name
-
-    def __repr__(self):
-        return "<Location %s>" % self.name
-
 class Plant(models.Model):
     name = models.CharField(max_length=70)
     sci_name = models.CharField(max_length=70)
@@ -78,6 +60,25 @@ class Plant(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Location(models.Model):
+    name = models.CharField(max_length=20)
+    exposure = models.ManyToManyField(Exposure)
+    description = models.CharField(max_length=25)
+    garden = models.ForeignKey(Garden)
+    plants = models.ManyToManyField(Plant, through='Planting')
+
+    def get_absolute_url(self):
+        """Update URL."""
+
+        return reverse('location', kwargs={'pk': self.id})
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return "<Location %s>" % self.name
 
 
 class Planting(models.Model):

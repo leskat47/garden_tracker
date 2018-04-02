@@ -6,7 +6,12 @@
 <h1>Locations</h1>
   <ul>
     {% for location in object_list %}
-      <li><a href="{{ location.get_absolute_url }}">{{ location.name }}</a></li>
+      <li>{{ location.name }}<a href="{{ location.get_absolute_url }}"> <i>edit</i></a></li>
+        <ul>
+          {% for plant in location.plants.distinct %}
+            <li>{{ plant.name }}</li>
+          {% endfor %}
+        </ul>
     {% empty %}
       <li>No locations yet.</li>
     {% endfor %}

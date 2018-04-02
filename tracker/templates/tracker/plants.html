@@ -3,7 +3,7 @@
   {% block title %}Logs{% endblock %}
 
   {% block content %}
-    <h1>Garden Logs</h1>
+    <h1>Plant Logs</h1>
     <ul>
         {% for plant in plant_list %}
             <li><strong><a href="{{ plant.get_absolute_url }}">{{ plant.name }}</a></strong>:
