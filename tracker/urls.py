@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^plants/$', views.PlantView.as_view(), name='plants'),
     url(r'^update/$', views.CreateLogView.as_view(), name='update'),
     url(r'^plant/(?P<pk>\d+)$', views.PlantDetailView.as_view(), name='plant-detail'),
+    url(r'^plant_new/$', views.CreatePlantView.as_view(), name='plant-new'),
+    url(r'^planting_new/$', views.CreatePlantingView.as_view(), name='planting-new'),    
 
     url(r'^accounts/', include('django.contrib.auth.urls')),
 

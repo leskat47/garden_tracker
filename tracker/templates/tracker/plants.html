@@ -4,6 +4,7 @@
 
   {% block content %}
     <h1>Plant Logs</h1>
+    <a class="btn btn-success" href="{% url 'planting-new'%}">New Planting</a>
     <ul>
         {% for plant in plant_list %}
             <li><strong><a href="{{ plant.get_absolute_url }}">{{ plant.name }}</a></strong>:

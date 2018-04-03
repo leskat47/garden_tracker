@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from django.views.generic.edit import FormView, UpdateView
+from django.views.generic.edit import FormView, UpdateView, CreateView
 from tracker import forms
 from django.urls import reverse_lazy
 
@@ -40,10 +40,41 @@ class LocationUpdateView(UpdateView):
 
 class PlantView(generic.ListView):
     """ Show list of current plant plantings and their status """
-
+#
     template_name ='tracker/plants.html'
     # queryset = Plant.objects.order_by("name").prefetch_related('planting_set')
     queryset = Plant.objects.order_by("name")
+
+class CreatePlantView(CreateView):
+    model = Plant
+    template_name = "tracker/plant_form.html"
+    success_url = 'tracker/plants'
+    # form_class = forms.PlantForm
+
+    fields = ['name',
+              'sci_name',
+              'height',
+              'width',
+              'color',
+              'exposure',
+              'moisture',
+              'bloom_season',
+              'food',
+              'soil',
+              'notes' ]
+
+
+class CreatePlantingView(CreateView):
+    model = Planting
+    template_name = "tracker/planting_form.html"
+    success_url = 'tracker/plants/'
+    # form_class = forms.PlantingForm
+
+    fields = ['date',
+              'plant',
+              'location',
+              'status',
+              'description']
 
 
 class PlantDetailView(generic.DetailView):

@@ -1,5 +1,5 @@
 from django import forms
-from tracker.models import Log
+from tracker.models import Log, Plant, Planting
 
 # class UpdateForm(forms.Form):
 #     notes = forms.CharField(label='notes', max_length=500, required=False)
@@ -18,4 +18,20 @@ class LogForm(forms.ModelForm):
         return super(LogForm, self).__init__(*args, **kwargs)
 
 
-# class NewLog(forms.Form):
+# class PlantForm(forms.Form):
+#
+#     class Meta:
+#         model = Plant
+#         success_url = "/tracker/plants"
+#
+#     def __init__(self, *args, **kwargs):
+#         return super(PlantForm, self).__init__(*args, **kwargs)
+#
+# class PlantingForm(forms.Form):
+#
+#     class Meta:
+#         model = Planting
+#         success_url = "/tracker/plants"
+#
+#     def __init__(self, *args, **kwargs):
+#         return super(PlantingForm, self).__init__(*args, **kwargs)
