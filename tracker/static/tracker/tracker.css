@@ -10,6 +10,12 @@ article {
   padding-top: .5em;
   padding-bottom: .5em;
 }
+
+.icon {
+  height: 15px;
+  padding: 2px;
+}
+
 .container {
   background-color: #edffe8;
 }

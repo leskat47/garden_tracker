@@ -3,10 +3,11 @@
 {% block title %}Locations{% endblock %}
 
 {% block content %}
+{% load static %}
 <h1>Locations</h1>
   <ul>
     {% for location in object_list %}
-      <li>{{ location.name }}<a href="{{ location.get_absolute_url }}"> <i>edit</i></a></li>
+      <li>{{ location.name }}<a href="{{ location.get_absolute_url }}"> <img class="icon" src="{% static 'tracker/pencil.png' %}" alt="My image"/></a></li>
         <ul>
           {% for plant in location.plants.distinct %}
             <li>{{ plant.name }}</li>
